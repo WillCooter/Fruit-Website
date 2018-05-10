@@ -1,0 +1,157 @@
+<html><head>
+<link rel="stylesheet" href="style.css">
+<title>Payment informtion</title>
+<script language="javascript" type="text/javascript">
+
+	function verifyForm(form) {
+		var content = "The following have not been entered correctly:\n\n";
+		if(form.number.value.length != 16) {
+			content += " - Card number\n";
+		}
+		if(form.exp_month.value.length != 2 || form.exp_month.value < 1 || form.exp_month.value > 12) {
+			content += " - Expiration month\n";
+		}
+		if(form.exp_year.value.length != 4 || form.exp_year.value == "Year" || form.exp_year.value < 2017) {
+			content += " - Expiration year\n";
+		}
+		if(form.name.value == "Name on card") {
+			content += " - Cardholder name\n";
+		}
+		if(form.code.value.length != 3) {
+			content += " - Security code\n";
+		}
+		if (content != "The following have not been entered correctly:\n\n")
+			{alert(content); return false;
+		}
+		else {
+			alert("Payment succesful");
+			document.cookie = "basketIDs = ";
+			"path=/";
+		}
+	}
+
+	function isLetter(input) {
+		var charCode;
+		if (input.which) {
+			charCode = input.which;
+		}
+		else {
+			charCode = input.keyCode;
+		}
+	    if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 32) {
+	        return true;
+	    }
+	    return false;
+	}
+
+	function isNumber(input, item, maxLength) {
+		var charCode;
+		if (input.which) {
+			charCode = input.which;
+		}
+		else {
+			charCode = input.keyCode;
+		}
+		if((charCode > 47 && charCode < 58) && (item.value.length != maxLength)) {
+			return true;
+		}
+		return false;
+	}
+
+	function focusFunction(item, messageValue) {
+		item.style.background = "#e5e3e3";
+		if (item.value == item.name) {
+			item.value = "";
+		}
+		helpMessageCreator(messageValue);
+	}
+
+	function blurFunction(item, maxLength) {
+		if (item.id == "exp_month") {
+			if (item.value == "") {
+			item.value = item.name;
+			item.style.background = "#ffffff";
+			}
+			else if (item.value.length != maxLength || item.value < 1 || item.value > 12) {
+				item.style.background = "#e8bdb7";
+			}
+			else {
+				item.style.background = "#deedde";
+			}
+		}
+		else if (item.id == "exp_year") {
+			if (item.value == "") {
+			item.value = item.name;
+			item.style.background = "#ffffff";
+			}
+			else if (item.value.length != maxLength || item.value < 2017) {
+				item.style.background = "#e8bdb7";
+			}
+			else {
+				item.style.background = "#deedde";
+			}
+		}
+		else if (item.id == "name") {
+			if (item.value == "") {
+			item.value = item.name;
+			item.style.background = "#ffffff";
+			}
+			else {
+				item.style.background = "#deedde";
+			}
+		}
+		else {
+			if (item.value == "") {
+				item.value = item.name;
+				item.style.background = "#ffffff";
+			}
+			else if (item.value.length != maxLength) {
+				item.style.background = "#e8bdb7";
+			}
+			else {
+				item.style.background = "#deedde";
+			}
+		}
+		helpMessageCreator(0);
+	}
+
+	function helpMessageCreator(value) {
+		if (value == 0) {
+			document.getElementById('helpMessage').innerHTML = "-";
+		}
+		else if (value == 1) {
+			document.getElementById('helpMessage').innerHTML = "Enter 16 digit card number (ie: 1234567890123456)";
+		}
+		else if (value == 2) {
+			document.getElementById('helpMessage').innerHTML = "Enter month of expiry (ie: 01)";
+		}
+		else if (value == 3) {
+			document.getElementById('helpMessage').innerHTML = "Enter year of expiry (ie: 2017)";
+		}
+		else if (value == 4) {
+			document.getElementById('helpMessage').innerHTML = "Enter card holder's name (ie: MR W B COOTER)";
+		}
+		else if (value == 5) {
+			document.getElementById('helpMessage').innerHTML = "Enter 3 digit security number (ie: 321)";
+		}
+	}
+
+
+</script></head>
+<body style="background-color: powderblue;">
+<h1>FreshFruits.com</h1>
+<ul>
+	<li><a href="fruit.php">Home</a></li>
+	<li><a href="basket.php">Basket</a></li>
+</ul>
+</nav>
+	<form name="myForm" class="theForm" method="POST" action="fruit.php" onSubmit="return verifyForm(this)">
+		<p id="helpMessage" name="helpMessage">-</p>
+		<input type="text" id="number" name="Card Number" value="Card Number" onKeyPress="return isNumber(event, this, 16)" onFocus="focusFunction(this, 1)" onBlur="blurFunction(this, 16)"><br>
+		<input type="text" id="exp_month" name="Month" value="Month" onKeyPress="return isNumber(event, this, 2)" onFocus="focusFunction(this, 2)" onBlur="blurFunction(this, 2)">
+		<input type="text" id="exp_year" name="Year" value="Year" onKeyPress="return isNumber(event, this, 4)" onFocus="focusFunction(this, 3)" onBlur="blurFunction(this, 4)"><br>
+		<input type="text" id="name" name="Name on card" value="Name on card" onKeyPress="return isLetter(event)" onFocus="focusFunction(this, 4)" onBlur="blurFunction(this, 30)"><br>
+		<input type="text" id="code" name="Security code" value="Security code" onKeyPress="return isNumber(event, this, 3)" onFocus="focusFunction(this, 5)" onBlur="blurFunction(this, 3)"><br>
+		<input type="submit" value="Pay">
+	</form>
+</body></html>

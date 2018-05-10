@@ -1,0 +1,136 @@
+input {
+	width: 400px;
+    height: 50px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    resize: none;
+}
+
+p {
+	font-size: 16px;
+	padding: 12px 20px;
+	font-family: Sans-serif;
+	color: red;
+	font-weight: bold;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+}
+
+
+/* MENU STYLE */
+
+/* Menu block */
+ul {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 13pt;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+}
+/* Menu allignment */
+li {
+    float: left;
+}
+/* Menu text */
+ul li a {
+    display: inline-block;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+/* Hover text */
+ul li a:hover {
+    background-color: #111;
+}
+/* Active text */
+ul li a:active {
+    background-color: #0d0d0d;
+}
+
+
+
+
+/* TEXT STYLES */
+
+/* Title text */
+h1 {
+    font-family: "Palatino Linotype", "Book Antiqua", serif;
+    font-size: 40pt;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Subtitle text */
+h2 {
+    font-family: "Palatino Linotype", "Book Antiqua", serif;
+    font-size: 20pt;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Link text */
+.link a {
+    font-family: "Palatino Linotype", "Book Antiqua", serif;
+    font-size: 15pt;
+    font-weight: normal;
+    color: #5c5c3d;
+    display: inline;
+}
+/* Link hover text */
+.link a:hover {
+    color: #3d3d29;
+}
+/* Link activation text */
+.link a:active {
+    color: #1f1f14;
+}
+/* Link visited text */
+.link a:visited {
+    color: #333300;
+}
+
+
+
+
+
+/* TABLE STYLES */
+
+/*Table block*/
+table {
+    margin: 10px 30px;
+    border-collapse: collapse;
+    width: 700px;
+    float: left;
+    }
+/* Column headings */
+th {
+    font-family: "Palatino Linotype", "Book Antiqua", serif;
+    font-size: 18pt;
+    border: 2px solid #3d3d29;
+    padding: 0px 5px;
+    text-align: center;
+    background-color: #b3b3b3;
+    }
+/* Columns */
+td {
+    font-family: "Palatino Linotype", "Book Antiqua", serif;
+    font-size: 14pt;
+    border: 2px solid #3d3d29;
+    padding: 0px 5px;
+    text-align: left;
+    background-color: #cccccc;
+    }
+/* Table title */
+tt {
+    font-family: "Palatino Linotype", "Book Antiqua", serif;
+    font-size: 20pt;
+    font-weight: bold;
+}
